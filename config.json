@@ -1,0 +1,9 @@
+{
+	"server": {
+		"url": "wss://irc.zeolia.chat:8000",
+		"autojoin": ["#discussions", "#ircday-fr"],
+		"auth": "optional",
+		"nick": "zeolien_*",
+		"ping": 180
+	}
+}
