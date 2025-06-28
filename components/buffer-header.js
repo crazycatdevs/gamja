@@ -3,18 +3,19 @@ import linkify from "../lib/linkify.js";
 import { strip as stripANSI } from "../lib/ansi.js";
 import { BufferType, ServerStatus, getServerName } from "../state.js";
 import * as irc from "../lib/irc.js";
+import i18next from "../lib/i18n";
 
 const UserStatus = {
-	HERE: "here",
-	GONE: "gone",
-	OFFLINE: "offline",
+	HERE: i18next.t("here"),
+	GONE: i18next.t("gone"),
+	OFFLINE: i18next.t("offline"),
 };
 
 function NickStatus(props) {
 	let textMap = {
-		[UserStatus.HERE]: "User is online",
-		[UserStatus.GONE]: "User is away",
-		[UserStatus.OFFLINE]: "User is offline",
+		[UserStatus.HERE]: i18next.t("User is online"),
+		[UserStatus.GONE]: i18next.t("User is away"),
+		[UserStatus.OFFLINE]: i18next.t("User is offline"),
 	};
 	let text = textMap[props.status];
 	return html`<span class="status status-${props.status}" title=${text}>●</span>`;
@@ -69,19 +70,19 @@ export default function BufferHeader(props) {
 			<button
 				key="join"
 				onClick=${props.onJoin}
-			>Join channel</button>
+			>${i18next.t("Join channel")}</button>
 		`;
 		let reconnectButton = html`
 			<button
 				key="reconect"
 				onClick=${props.onReconnect}
-			>Reconnect</button>
+			>${i18next.t("Reconnect")}</button>
 		`;
 		let settingsButton = html`
 			<button
 				key="settings"
 				onClick="${props.onOpenSettings}"
-			>Settings</button>
+			>${i18next.t("Settings")}</button>
 		`;
 
 		if (props.server.isBouncer) {
@@ -94,7 +95,7 @@ export default function BufferHeader(props) {
 						<button
 							key="manage"
 							onClick=${props.onManageNetwork}
-						>Manage network</button>
+						>${i18next.t("Manage network")}</button>
 					`);
 				}
 			} else {
@@ -103,7 +104,7 @@ export default function BufferHeader(props) {
 						<button
 							key="add"
 							onClick=${props.onAddNetwork}
-						>Add network</button>
+						>${i18next.t("Add network")}</button>
 					`);
 				} else if (props.server.status === ServerStatus.DISCONNECTED) {
 					actions.push(reconnectButton);
@@ -129,7 +130,7 @@ export default function BufferHeader(props) {
 					key="part"
 					class="danger"
 					onClick=${props.onClose}
-				>Leave</button>
+				>${i18next.t("Leave")}</button>
 			`);
 		} else {
 			if (fullyConnected) {
@@ -137,7 +138,7 @@ export default function BufferHeader(props) {
 					<button
 						key="join"
 						onClick=${props.onJoin}
-					>Join</button>
+					>${i18next.t("Join")}</button>
 				`);
 			}
 			actions.push(html`
@@ -145,7 +146,7 @@ export default function BufferHeader(props) {
 					key="part"
 					class="danger"
 					onClick=${props.onClose}
-				>Close</button>
+				>${i18next.t("Close")}</button>
 			`);
 		}
 		break;
@@ -208,7 +209,7 @@ export default function BufferHeader(props) {
 				key="close"
 				class="danger"
 				onClick=${props.onClose}
-			>Close</button>
+			>${i18next.t("Close")}</button>
 		`;
 		break;
 	}

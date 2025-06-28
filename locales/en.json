@@ -1,0 +1,20 @@
+{
+   "Username": "Username",
+   "Password": "Password",
+   "Login": "Login",
+   "here": "here",
+   "gone": "gone",
+   "offline": "offline",
+   "User is online": "User is online",
+   "User is away": "User is away",
+   "User is offline": "User is offline",
+   "Channel": "Channel",
+   "Join": "Join",
+   "Join channel": "Join channel",
+   "Reconnect": "Reconnect",
+   "Settings": "Settings",
+   "Manage network": "Manage network",
+   "Add network": "Add network",
+   "Leave": "Leave",
+   "Close": "Close"
+}

@@ -1,0 +1,20 @@
+{
+   "Username": "Pseudonyme",
+   "Password": "Mot de passe",
+   "Login": "Connexion",
+   "here": "ici",
+   "gone": "absent",
+   "offline": "déconnecté",
+   "User is online": "L'utilisateur est présent",
+   "User is away": "L'utilisateur est absent",
+   "User is offline": "L'utilisateur est déconnecté",
+   "Channel": "Canal",
+   "Join": "Rejoindre",
+   "Join channel": "Rejoindre le canal",
+   "Reconnect": "Reconnexion",
+   "Settings": "Réglages",
+   "Manage network": "Gestion des réseaux",
+   "Add network": "Ajouter un réseau",
+   "Leave": "Quitter",
+   "Close": "Fermer"
+}

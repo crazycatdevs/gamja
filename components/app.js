@@ -23,6 +23,7 @@ import { SERVER_BUFFER, BufferType, ReceiptType, ServerStatus, Unread, BufferEve
 import commands from "../commands.js";
 import { setup as setupKeybindings } from "../keybindings.js";
 import * as store from "../store.js";
+import i18next from "../lib/i18n";
 
 const baseConfig = {
 	server: {},

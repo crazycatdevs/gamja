@@ -1,4 +1,5 @@
 import { html, Component } from "../lib/index.js";
+import i18next from "../lib/i18n";
 
 export default class NetworkForm extends Component {
 	state = {
@@ -33,18 +34,18 @@ export default class NetworkForm extends Component {
 		return html`
 			<form onInput=${this.handleInput} onSubmit=${this.handleSubmit}>
 				<label>
-					Username:<br/>
+					${i18next.t("Username")}:<br/>
 					<input type="username" name="username" value=${this.state.username} required/>
 				</label>
 				<br/><br/>
 
 				<label>
-					Password:<br/>
+					${i18next.t("Password")}:<br/>
 					<input type="password" name="password" value=${this.state.password} required autofocus/>
 				</label>
 				<br/><br/>
 
-				<button>Login</button>
+				<button>${i18next.t("Login")}</button>
 			</form>
 		`;
 	}

@@ -1,4 +1,5 @@
 import { html, Component } from "../lib/index.js";
+import i18next from "../lib/i18n";
 
 export default class JoinForm extends Component {
 	state = {
@@ -36,13 +37,13 @@ export default class JoinForm extends Component {
 		return html`
 			<form onInput=${this.handleInput} onSubmit=${this.handleSubmit}>
 				<label>
-					Channel:<br/>
+					${i18next.t("Channel")}:<br/>
 					<input type="text" name="channel" value=${this.state.channel} autofocus required/>
 				</label>
 				<br/>
 
 				<br/>
-				<button>Join</button>
+				<button>${i18next.t("Join")}</button>
 			</form>
 		`;
 	}
