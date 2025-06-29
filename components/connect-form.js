@@ -1,5 +1,6 @@
 import { html, Component, createRef } from "../lib/index.js";
 import linkify from "../lib/linkify.js";
+import i18next from "../lib/i18n";
 
 export default class ConnectForm extends Component {
 	state = {
@@ -87,7 +88,7 @@ export default class ConnectForm extends Component {
 		if (!this.props.params || !this.props.params.url) {
 			serverURL = html`
 				<label>
-					Server URL:<br/>
+					${i18next.t("Server URL")}:<br/>
 					<input
 						type="text"
 						name="url"
@@ -103,7 +104,7 @@ export default class ConnectForm extends Component {
 		let status = null;
 		if (this.props.connecting) {
 			status = html`
-				<p>Connecting...</p>
+				<p>${i18next.t("Connecting")}...</p>
 			`;
 		} else if (this.props.error) {
 			status = html`
@@ -115,14 +116,14 @@ export default class ConnectForm extends Component {
 		if (this.props.auth !== "disabled" && this.props.auth !== "external" && this.props.auth !== "oauth2") {
 			auth = html`
 				<label>
-					Password:<br/>
+					${i18next.t("Password")}:<br/>
 					<input
 						type="password"
 						name="password"
 						value=${this.state.password}
 						disabled=${disabled}
 						required=${this.props.auth === "mandatory"}
-						placeholder=${this.props.auth !== "mandatory" ? "(optional)" : ""}
+						placeholder=${this.props.auth !== "mandatory" ? i18next.t("(optional)") : ""}
 					/>
 				</label>
 				<br/><br/>
@@ -132,7 +133,7 @@ export default class ConnectForm extends Component {
 		let autojoin = null;
 		let channels = this.props.params.autojoin || [];
 		if (channels.length > 0) {
-			let s = channels.length > 1 ? "s" : "";
+			let aj_chans = channels.length > 1 ? i18next.t("Auto-join channels") : i18next.t("Auto-join channel");
 			autojoin = html`
 				<label>
 					<input
@@ -140,7 +141,7 @@ export default class ConnectForm extends Component {
 						name="autojoin"
 						checked=${this.state.autojoin}
 					/>
-					Auto-join channel${s} <strong>${channels.join(", ")}</strong>
+					${aj_chans} <strong>${channels.join(", ")}</strong>
 				</label>
 				<br/><br/>
 			`;
@@ -148,10 +149,10 @@ export default class ConnectForm extends Component {
 
 		return html`
 			<form onInput=${this.handleInput} onSubmit=${this.handleSubmit}>
-				<h2>Connect to IRC</h2>
+				<h2>${i18next.t("Connect to IRC")}</h2>
 
 				<label>
-					Nickname:<br/>
+					${i18next.t("Nickname")}:<br/>
 					<input
 						type="username"
 						name="nick"
@@ -175,56 +176,56 @@ export default class ConnectForm extends Component {
 						checked=${this.state.rememberMe}
 						disabled=${disabled}
 					/>
-					Remember me
+					${i18next.t("Remember me")}
 				</label>
 				<br/><br/>
 
 				<details>
-					<summary role="button">Advanced options</summary>
+					<summary role="button">${i18next.t("Advanced options")}</summary>
 
 					<br/>
 
 					${serverURL}
 
 					<label>
-						Username:<br/>
+						${i18next.t("Username")}:<br/>
 						<input
 							type="username"
 							name="username"
 							value=${this.state.username}
 							disabled=${disabled}
-							placeholder="Same as nickname"
+							placeholder="${i18next.t("Same as nickname")}"
 						/>
 					</label>
 					<br/><br/>
 
 					<label>
-						Real name:<br/>
+						${i18next.t("Real name")}:<br/>
 						<input
 							type="text"
 							name="realname"
 							value=${this.state.realname}
 							disabled=${disabled}
-							placeholder="Same as nickname"
+							placeholder="${i18next.t("Same as nickname")}"
 						/>
 					</label>
 					<br/><br/>
 
 					<label>
-						Server password:<br/>
+						${i18next.t("Server password")}:<br/>
 						<input
 							type="password"
 							name="pass"
 							value=${this.state.pass}
 							disabled=${disabled}
-							placeholder="None"
+							placeholder="${i18next.t("None")}"
 						/>
 					</label>
 					<br/><br/>
 				</details>
 
 				<br/>
-				<button disabled=${disabled}>Connect</button>
+				<button disabled=${disabled}>${i18next.t("Connect")}</button>
 
 				${status}
 			</form>
